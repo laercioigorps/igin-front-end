@@ -3,9 +3,10 @@ import { useActiveIteration, useTasksByIteration } from "../../data/use-data";
 function CardTasksByIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
     useActiveIteration();
+  const { tasks, tasksLoading, tasksError, tasksLoggedOut, tasksMutate } =
+    useTasksByIteration(iteration ? iteration.id : null);
   console.log("aiaiai");
-  console.log(iterationError);
- 
+  console.log(tasks);
 
   async function handleChange(task) {
     const res = await fetch("http://127.0.0.1:8000/delivery/" + task.id + "/", {
@@ -31,10 +32,10 @@ function CardTasksByIterationList(props) {
     } else {
       console.log(result);
     }
-    mutate();
+    tasksMutate();
   }
 
-  const list = false
+  const list = tasks
     ? tasks.map((task) =>
         task.iteration == iteration.id ? (
           <tr
@@ -94,7 +95,7 @@ function CardTasksByIterationList(props) {
             <thead>
               <tr>
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Task
+                  Tasks
                 </th>
 
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">

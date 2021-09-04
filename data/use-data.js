@@ -211,7 +211,7 @@ export function useTasksByIteration(iteration) {
   const loggedOut = !(
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
-  const { data, error } = useSWR(
+  const { data, error, mutate } = useSWR(
     !loggedOut && iteration
       ? [
           "http://127.0.0.1:8000/iteration/" + iteration + "/delivery/",
@@ -225,8 +225,9 @@ export function useTasksByIteration(iteration) {
 
   return {
     tasksLoading: loading,
-    tasksLoggedOut,
+    tasksLoggedOut: loggedOut,
     tasks: data,
-    tasksError: error
+    tasksError: error,
+    tasksMutate: mutate,
   };
 }

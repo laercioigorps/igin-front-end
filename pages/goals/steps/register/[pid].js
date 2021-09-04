@@ -2,7 +2,7 @@ import RegisterStepForm from "../../../../components/forms/RegisterStepForm.js";
 import Layout from "../../../../components/layout.js";
 import { useRouter } from "next/router";
 import React from "react";
-import useNeeds from "../../../../data/use-needs";
+import {useNeeds} from "../../../../data/use-data";
 
 export default function Register() {
   const router = useRouter();

@@ -6,7 +6,7 @@ import Layout from "../../../components/layout.js";
 // import CardLineChart from "../components/Cards/CardLineChart.js";
 // import CardBarChart from "../components/Cards/CardBarChart.js";
 import CardTasksByStepList from "../../../components/Cards/CardTasksByStepList.js";
-import CardTasksByIterationList from "../../../components/Cards/CardTasksByIterationList.js";
+import CardTasksByStepAndIterationList from "../../../components/Cards/CardTasksByStepAndIterationList";
 import CardTasksList from "../../../components/Cards/CardTasksList.js";
 
 export default function Goals() {
@@ -166,7 +166,7 @@ export default function Goals() {
             <CardTasksByStepList tasks={tasks} step={pid} />
           </div>
           <div className="w-full xl:w-4/12 px-4">
-            <CardTasksByIterationList tasks={todo} step={pid}  />
+            <CardTasksByStepAndIterationList tasks={todo} step={pid} />
           </div>
         </div>
         {/*<div className="flex flex-wrap">
