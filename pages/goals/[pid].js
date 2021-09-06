@@ -5,7 +5,7 @@ import Layout from "../../components/layout.js";
 // import CardLineChart from "../components/Cards/CardLineChart.js";
 // import CardBarChart from "../components/Cards/CardBarChart.js";
 import CardStepsByGoalList from "../../components/Cards/CardStepsByGoalList.js";
-import CardTasksByGoalList from "../../components/Cards/CardTasksByGoalList.js";
+import CardTasksByGoalAndIterationList from "../../components/Cards/CardTasksByGoalAndIterationList.js";
 import CardTasksList from "../../components/Cards/CardTasksList.js";
 import { useGoal } from "../../data/use-data";
 import { useRouter } from "next/router";
@@ -132,15 +132,15 @@ export default function Goals() {
           <p className="mt-4">Loren ipsum xxxxx</p>
           </div>
         </div>*/}
-          <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+          <div className="w-full xl:w-7/12 mb-12 xl:mb-0 px-4">
             <CardStepsByGoalList
               steps={steps}
               name={data ? data.name : null}
               goal={pid}
             />
           </div>
-          <div className="w-full xl:w-4/12 px-4">
-            <CardTasksByGoalList tasks={tasks} />
+          <div className="w-full xl:w-5/12 px-4">
+            <CardTasksByGoalAndIterationList tasks={tasks} goal={pid} />
           </div>
         </div>
         {/*<div className="flex flex-wrap">

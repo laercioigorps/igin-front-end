@@ -106,19 +106,17 @@ export function useNeeds() {
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
   const { data, error } = useSWR(
-    !loggedOut
-      ? ["http://127.0.0.1:8000/need/", localStorage.token]
-      : null,
+    !loggedOut ? ["http://127.0.0.1:8000/need/", localStorage.token] : null,
     fetcher
   );
 
   const loading = !data && !error && !loggedOut;
 
   return {
-    needsLoading : loading,
+    needsLoading: loading,
     needsLoggedOut: loggedOut,
     needs: data,
-    needsError : error,
+    needsError: error,
   };
 }
 
@@ -198,7 +196,6 @@ export function useTask(id) {
   );
 
   const loading = !data && !error;
-  3;
 
   return {
     loading,
@@ -217,6 +214,49 @@ export function useTasksByIteration(iteration) {
           "http://127.0.0.1:8000/iteration/" + iteration + "/delivery/",
           localStorage.token,
         ]
+      : null,
+    fetcher
+  );
+  const loading = !data && !error;
+
+  return {
+    tasksLoading: loading,
+    tasksLoggedOut: loggedOut,
+    tasks: data,
+    tasksError: error,
+    tasksMutate: mutate,
+  };
+}
+
+export function useTasksByStep(step) {
+  const loggedOut = !(
+    typeof window !== "undefined" && localStorage.getItem("token") != "null"
+  );
+  const { data, error, mutate } = useSWR(
+    !loggedOut && step
+      ? ["http://127.0.0.1:8000/" + step + "/delivery/", localStorage.token]
+      : null,
+    fetcher
+  );
+
+  const loading = !data && !error;
+
+  return {
+    tasksLoading: loading,
+    tasksLoggedOut: loggedOut,
+    tasks: data,
+    tasksError: error,
+    tasksMutate: mutate,
+  };
+}
+
+export function useTasksByGoal(goal) {
+  const loggedOut = !(
+    typeof window !== "undefined" && localStorage.getItem("token") != "null"
+  );
+  const { data, error, mutate } = useSWR(
+    !loggedOut && goal
+      ? ["http://127.0.0.1:8000/" + goal + "/delivery_by_goal/", localStorage.token]
       : null,
     fetcher
   );

@@ -1,11 +1,10 @@
-import { useActiveIteration, useTasksByStep } from "../../data/use-data";
+import { useActiveIteration, useTasksByGoal } from "../../data/use-data";
 
-function CardTasksByStepAndIterationList(props) {
+function CardTasksByGoalAndIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
     useActiveIteration();
   const { tasks, tasksLoading, tasksError, tasksLoggedOut, tasksMutate } =
-    useTasksByStep(props.step ? props.step : null);
-  console.log("aiaiai");
+    useTasksByGoal(props.goal ? props.goal : null);
   console.log(tasks);
 
   async function handleChange(task) {
@@ -37,7 +36,7 @@ function CardTasksByStepAndIterationList(props) {
 
   const list = tasks
     ? tasks.map((task) =>
-        task.iteration == iteration.id && task.step == props.step ? (
+        task.iteration == iteration.id ? (
           <tr
             key={task.id}
             className={
@@ -49,6 +48,9 @@ function CardTasksByStepAndIterationList(props) {
                 {task.name}
               </a>
             </th>
+            <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              {task.step}
+            </td>
             <td className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-center ">
               <input
                 type="checkbox"
@@ -97,6 +99,9 @@ function CardTasksByStepAndIterationList(props) {
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Tasks
                 </th>
+                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Step
+                </th>
 
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Completed
@@ -110,4 +115,4 @@ function CardTasksByStepAndIterationList(props) {
     </>
   );
 }
-export default CardTasksByStepAndIterationList;
+export default CardTasksByGoalAndIterationList;
