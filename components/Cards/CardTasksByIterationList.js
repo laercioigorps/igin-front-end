@@ -5,8 +5,7 @@ function CardTasksByIterationList(props) {
     useActiveIteration();
   const { tasks, tasksLoading, tasksError, tasksLoggedOut, tasksMutate } =
     useTasksByIteration(iteration ? iteration.id : null);
-  console.log("aiaiai");
-  console.log(tasks);
+  
 
   async function handleChange(task) {
     const res = await fetch("http://127.0.0.1:8000/delivery/" + task.id + "/", {
