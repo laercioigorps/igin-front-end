@@ -7,10 +7,11 @@ import Layout from "../components/layout.js";
 // import CardLineChart from "../components/Cards/CardLineChart.js";
 // import CardBarChart from "../components/Cards/CardBarChart.js";
 import CardGoalList from "../components/Cards/CardGoalList.js";
+import PieChart from "../components/Cards/CardGoalsPieChart";
 import CardSocialTraffic from "../components/Cards/CardSocialTraffic.js";
 
 export default function Goals() {
-  const { user, loading, loggedOut } = useUser();
+  const { goals, loading, loggedOut } = useUser();
   const router = useRouter();
   useEffect(() => (loggedOut ? router.push("/auth/login") : null));
 
@@ -73,13 +74,13 @@ export default function Goals() {
   ];
   return (
     <>
-      <Layout statsList={stats}>
+      <Layout statsList={false}>
         <div className="flex flex-wrap mt-4">
           <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
             <CardGoalList />
           </div>
           <div className="w-full xl:w-4/12 px-4">
-            <CardSocialTraffic />
+            <PieChart />
           </div>
         </div>
         {/*<div className="flex flex-wrap">

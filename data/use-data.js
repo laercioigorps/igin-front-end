@@ -75,9 +75,9 @@ export function useGoals() {
   const loading = !data && !error;
 
   return {
-    loading,
-    loggedOut,
-    data: data,
+    goalsLoading: loading,
+    goalsLoggedOut: loggedOut,
+    goals: data,
   };
 }
 

@@ -2,12 +2,13 @@ import Link from "next/link";
 import { useGoals } from "../../data/use-data";
 
 function CardGoalList(props) {
-  const { data, loading, loggedOut } = useGoals();
+  const { goals, goalsLoading, goalsLoggedOut } = useGoals();
+
   console.log("the data is")
-  console.log(data ? data.detail : data)
+  console.log(goals ? goals : null)
   const list =
-    data && !loading && !loggedOut && !data.detail ? (
-      data.map((goal) => (
+    goals && !goalsLoading && !goalsLoggedOut && !goals.detail ? (
+      goals.map((goal) => (
         <tr key={goal.id}>
           <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left capitalize">
             <Link href={"/goals/" + goal.id}>
