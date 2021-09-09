@@ -4,8 +4,8 @@ import { useGoals } from "../../data/use-data";
 function CardGoalList(props) {
   const { goals, goalsLoading, goalsLoggedOut } = useGoals();
 
-  console.log("the data is")
-  console.log(goals ? goals : null)
+  console.log("the data is");
+  console.log(goals ? goals : null);
   const list =
     goals && !goalsLoading && !goalsLoggedOut && !goals.detail ? (
       goals.map((goal) => (
@@ -16,8 +16,12 @@ function CardGoalList(props) {
             </Link>
           </th>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            {goal.need.name}
+          </td>
+          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             {goal.endDate}
           </td>
+
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             {/*<i className="fas fa-arrow-up text-emerald-500 mr-4"></i>*/}
             High
@@ -75,6 +79,9 @@ function CardGoalList(props) {
               <tr>
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Goal
+                </th>
+                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Need
                 </th>
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   End Date
