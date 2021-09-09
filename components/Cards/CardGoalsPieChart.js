@@ -5,13 +5,13 @@ function getInfo(goals) {
   var result = { label: [], data: [] };
   goals.forEach((goal, index) => {
     var count = 0;
-    if (!result.label.includes(goal.need)) {
+    if (!result.label.includes(goal.need.name)) {
       goals.forEach((goa, ind) => {
-        if (goal.need === goa.need) {
+        if (goal.need.name === goa.need.name) {
           count++;
         }
       });
-      result.label.push(goal.need);
+      result.label.push(goal.need.name);
       result.data.push(count);
     }
   });
