@@ -29,7 +29,7 @@ function getInfo(goals) {
     if (!result.label.includes(goal.need)) {
         goals.forEach((goa, ind) => {
             
-            if (goal.need === goa.need) {
+            if (goal.need ===    goa.need) {
               count++
             }
           });
