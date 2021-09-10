@@ -95,9 +95,10 @@ export function useGoal(id) {
   const loading = !data && !error;
 
   return {
-    loading,
-    loggedOut,
-    data: data,
+    goalLoading: loading,
+    goalLoggedOut: loggedOut,
+    goal: data,
+    goalError: error,
   };
 }
 
