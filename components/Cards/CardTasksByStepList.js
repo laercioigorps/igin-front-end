@@ -84,7 +84,7 @@ function CardTasksByStepList(props) {
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
               <h3 className="font-semibold text-base text-blueGray-700">
-                All tasks <a className="text-blue-500 text-xs" href={"/edit/step/"+props.step.id}>(Edit Step)</a>
+                All tasks <a className="text-blue-500 text-xs" href={"/edit/step/"+props.step}>(Edit Step)</a>
               </h3>
             </div>
             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
