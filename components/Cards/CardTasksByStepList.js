@@ -4,6 +4,7 @@ import Link from "next/link";
 
 function CardTasksByStepList(props) {
   const { data, loading, loggedOut, mutate } = useTasks(props.step);
+  console.log("trying")
   console.log(data);
 
   const { iteration, iterationLoading, iterationLoggedOut } =
@@ -39,7 +40,7 @@ function CardTasksByStepList(props) {
     mutate();
   };
 
-  const list = data
+  const list = data && !loading
     ? data.map((task, ind) => (
         <tr
           key={task.id}
@@ -85,10 +86,10 @@ function CardTasksByStepList(props) {
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
               <h3 className="font-semibold text-base text-blueGray-700">
                 All tasks{" "}
-                <Link>
+                <Link  href={"/edit/step/" + props.step}>
                   <a
                     className="text-blue-500 text-xs"
-                    href={"/edit/step/" + props.step}
+                   
                   >
                     (Edit Step)
                   </a>
