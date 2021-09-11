@@ -1,4 +1,5 @@
 import { useActiveIteration, useTasksByGoal } from "../../data/use-data";
+import Link from "next/link";
 
 function CardTasksByGoalAndIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
@@ -44,9 +45,9 @@ function CardTasksByGoalAndIterationList(props) {
             }
           >
             <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left ">
-              <a className="hover:text-blue-600 " href={"/tasks/" + task.id}>
-                {task.name}
-              </a>
+              <Link href={"/tasks/" + task.id}>
+                <a className="hover:text-blue-600 ">{task.name}</a>
+              </Link>
             </th>
             <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
               {task.step}
