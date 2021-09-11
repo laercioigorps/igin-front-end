@@ -48,9 +48,9 @@ function CardTasksByStepList(props) {
           }
         >
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left">
-            <a className="hover:text-blue-600" href={"/tasks/" + task.id}>
-              {task.name}
-            </a>
+            <Link href={"/tasks/" + task.id}>
+              <a className="hover:text-blue-600">{task.name}</a>
+            </Link>
           </td>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4">
             {task.description}
@@ -84,7 +84,15 @@ function CardTasksByStepList(props) {
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
               <h3 className="font-semibold text-base text-blueGray-700">
-                All tasks <a className="text-blue-500 text-xs" href={"/edit/step/"+props.step}>(Edit Step)</a>
+                All tasks{" "}
+                <Link>
+                  <a
+                    className="text-blue-500 text-xs"
+                    href={"/edit/step/" + props.step}
+                  >
+                    (Edit Step)
+                  </a>
+                </Link>
               </h3>
             </div>
             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">

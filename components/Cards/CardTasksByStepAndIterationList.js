@@ -1,4 +1,5 @@
 import { useActiveIteration, useTasksByStep } from "../../data/use-data";
+import Link from "next/link";
 
 function CardTasksByStepAndIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
@@ -45,9 +46,9 @@ function CardTasksByStepAndIterationList(props) {
             }
           >
             <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left ">
-              <a className="hover:text-blue-600 " href={"/tasks/" + task.id}>
-                {task.name}
-              </a>
+              <Link href={"/tasks/" + task.id}>
+                <a className="hover:text-blue-600 ">{task.name}</a>
+              </Link>
             </th>
             <td className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-center ">
               <input
