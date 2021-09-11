@@ -68,7 +68,6 @@ export default function RegisterForm(props) {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
             id="need"
             type="select"
-            placeholder="your goal here"
             defaultValue="7"
           >
             {needs
