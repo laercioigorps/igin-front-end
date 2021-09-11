@@ -14,9 +14,9 @@ export default function Goals() {
   const router = useRouter();
   const { pid } = router.query;
 
-  const { data, loading, loggedOut } = useGoal(pid);
-  console.log("loading" + loading);
-  console.log(data);
+  const { goal, goalLoading, goalLoggedOut } = useGoal(pid);
+  console.log("loading" + goalLoading);
+  console.log(goal);
 
   const steps = [
     { id: 1, name: "Learn that", endDate: "2021-08-02", need: 1 },
@@ -135,7 +135,7 @@ export default function Goals() {
           <div className="w-full xl:w-7/12 mb-12 xl:mb-0 px-4">
             <CardStepsByGoalList
               steps={steps}
-              name={data ? data.name : null}
+              name={goal ? goal.name : null}
               goal={pid}
             />
           </div>
