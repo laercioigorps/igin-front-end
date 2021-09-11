@@ -1,11 +1,11 @@
 import { useActiveIteration, useTasksByIteration } from "../../data/use-data";
+import Link from "next/link";
 
 function CardTasksByIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
     useActiveIteration();
   const { tasks, tasksLoading, tasksError, tasksLoggedOut, tasksMutate } =
     useTasksByIteration(iteration ? iteration.id : null);
-  
 
   async function handleChange(task) {
     const res = await fetch("http://127.0.0.1:8000/delivery/" + task.id + "/", {
@@ -44,9 +44,11 @@ function CardTasksByIterationList(props) {
             }
           >
             <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left ">
-              <a className="hover:text-blue-600 " href={"/tasks/" + task.id}>
+              <Link href={"/tasks/" + task.id}>
+              <a className="hover:text-blue-600 " >
                 {task.name}
               </a>
+              </Link>
             </th>
             <td className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-center ">
               <input
