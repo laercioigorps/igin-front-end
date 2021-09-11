@@ -148,7 +148,7 @@ export function useStep(id) {
   );
   const { data, error } = useSWR(
     !loggedOut && id
-      ? ["http://127.0.0.1:8000/goal/" + id, localStorage.token]
+      ? ["http://127.0.0.1:8000/step/" + id, localStorage.token]
       : null,
     fetcher
   );
@@ -157,9 +157,9 @@ export function useStep(id) {
   3;
 
   return {
-    loading,
-    loggedOut,
-    data: data,
+    stepLoading : loading,
+    stepLoggedOut: loggedOut,
+    step: data,
   };
 }
 
