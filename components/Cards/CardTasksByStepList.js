@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function CardTasksByStepList(props) {
   const { data, loading, loggedOut, mutate } = useTasks(props.step);
-  console.log("trying")
+  console.log("trying");
   console.log(data);
 
   const { iteration, iterationLoading, iterationLoggedOut } =
@@ -40,43 +40,46 @@ function CardTasksByStepList(props) {
     mutate();
   };
 
-  const list = data && !loading
-    ? data.map((task, ind) => (
-        <tr
-          key={task.id}
-          className={
-            task.completed === true ? "line-through text-gray-600" : ""
-          }
-        >
-          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left">
-            <Link href={"/tasks/" + task.id}>
-              <a className="hover:text-blue-600">{task.name}</a>
-            </Link>
-          </td>
-          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4">
-            {task.description}
-          </td>
-          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <button
-              className="bg-blue-500 p-1 border-solid border-4 border-light-blue-500 rounded-full"
-              onClick={() =>
-                task.completed === true
-                  ? alert("edit")
-                  : task.iteration == iteration.id
-                  ? setIteration(task.id, ind, null)
-                  : setIteration(task.id, ind, iteration.id)
-              }
-            >
-              {task.completed === true
-                ? "Detail"
-                : task.iteration == iteration.id
-                ? "Remove"
-                : "Add"}
-            </button>
-          </td>
-        </tr>
-      ))
-    : null;
+  const list =
+    data && !loading
+      ? data.map((task, ind) => (
+          <tr
+            key={task.id}
+            className={
+              task.completed === true ? "line-through text-gray-600" : ""
+            }
+          >
+            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left">
+              <Link href={"/tasks/" + task.id}>
+                <a className="hover:text-blue-600">{task.name}</a>
+              </Link>
+            </td>
+            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4">
+              {task.description}
+            </td>
+            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {iteration ? (
+                <button
+                  className="bg-blue-500 p-1 border-solid border-4 border-light-blue-500 rounded-full"
+                  onClick={() =>
+                    task.completed === true
+                      ? alert("edit")
+                      : task.iteration == iteration.id
+                      ? setIteration(task.id, ind, null)
+                      : setIteration(task.id, ind, iteration.id)
+                  }
+                >
+                  {task.completed === true
+                    ? "Detail"
+                    : task.iteration == iteration.id
+                    ? "Remove"
+                    : "Add"}
+                </button>
+              ) : null}
+            </td>
+          </tr>
+        ))
+      : null;
 
   return (
     <>
@@ -86,13 +89,8 @@ function CardTasksByStepList(props) {
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
               <h3 className="font-semibold text-base text-blueGray-700">
                 All tasks{" "}
-                <Link  href={"/edit/step/" + props.step}>
-                  <a
-                    className="text-blue-500 text-xs"
-                   
-                  >
-                    (Edit Step)
-                  </a>
+                <Link href={"/edit/step/" + props.step}>
+                  <a className="text-blue-500 text-xs">(Edit Step)</a>
                 </Link>
               </h3>
             </div>
