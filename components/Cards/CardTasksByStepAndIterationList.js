@@ -1,5 +1,6 @@
 import { useActiveIteration, useTasksByStep } from "../../data/use-data";
 import Link from "next/link";
+import WarningNoActiveIteration from "../warnings/WarningNoActiveIteration";
 
 function CardTasksByStepAndIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
@@ -36,8 +37,9 @@ function CardTasksByStepAndIterationList(props) {
     tasksMutate();
   }
 
-  const list = tasks
-    ? tasks.map((task) =>
+  const list =
+    tasks && iteration ? (
+      tasks.map((task) =>
         task.iteration == iteration.id && task.step == props.step ? (
           <tr
             key={task.id}
@@ -62,7 +64,9 @@ function CardTasksByStepAndIterationList(props) {
           </tr>
         ) : null
       )
-    : null;
+    ) : !iteration ? (
+      <WarningNoActiveIteration />
+    ) : null;
 
   return (
     <>
