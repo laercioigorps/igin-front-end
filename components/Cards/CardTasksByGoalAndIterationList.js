@@ -1,5 +1,6 @@
 import { useActiveIteration, useTasksByGoal } from "../../data/use-data";
 import Link from "next/link";
+import WarningNoActiveIteration from "../warnings/WarningNoActiveIteration";
 
 function CardTasksByGoalAndIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
@@ -35,8 +36,9 @@ function CardTasksByGoalAndIterationList(props) {
     tasksMutate();
   }
 
-  const list = tasks
-    ? tasks.map((task) =>
+  const list =
+    tasks && iteration ? (
+      tasks.map((task) =>
         task.iteration == iteration.id ? (
           <tr
             key={task.id}
@@ -64,7 +66,9 @@ function CardTasksByGoalAndIterationList(props) {
           </tr>
         ) : null
       )
-    : null;
+    ) : !iteration ? (
+      <WarningNoActiveIteration />
+    ) : null;
 
   return (
     <>
