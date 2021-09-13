@@ -1,19 +1,29 @@
+import { useIterations } from "../../data/use-data";
+
 function CardTaskList(props) {
-  const list = props.iterations.map((iteration) => (
-    <tr key={iteration.id}>
-      <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-        <a className="hover:text-blue-600" href={"/iterations/" + iteration.id}>
-          {iteration.number}
-        </a>
-      </th>
-      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {iteration.date}
-      </td>
-      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {iteration.completed}
-      </td>
-    </tr>
-  ));
+  const { iterations, iterationsLoading, iterationsError } = useIterations();
+  console.log(iterations);
+
+  const list = iterations
+    ? iterations.map((iteration) => (
+        <tr key={iteration.id}>
+          <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+            <a
+              className="hover:text-blue-600"
+              href={"/iterations/" + iteration.id}
+            >
+              {iteration.number}
+            </a>
+          </th>
+          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            {iteration.date}
+          </td>
+          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            {iteration.completed}
+          </td>
+        </tr>
+      ))
+    : null;
 
   return (
     <>
