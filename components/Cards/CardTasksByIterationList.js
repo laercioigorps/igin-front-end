@@ -1,5 +1,6 @@
 import { useActiveIteration, useTasksByIteration } from "../../data/use-data";
 import Link from "next/link";
+import WarningNoActiveIteration from "../warnings/WarningNoActiveIteration";
 
 function CardTasksByIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
@@ -34,8 +35,9 @@ function CardTasksByIterationList(props) {
     tasksMutate();
   }
 
-  const list = tasks
-    ? tasks.map((task) =>
+  const list =
+    tasks && iteration ? (
+      tasks.map((task) =>
         task.iteration == iteration.id && !task.completed ? (
           <tr
             key={task.id}
@@ -45,9 +47,7 @@ function CardTasksByIterationList(props) {
           >
             <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left ">
               <Link href={"/tasks/" + task.id}>
-              <a className="hover:text-blue-600 " >
-                {task.name}
-              </a>
+                <a className="hover:text-blue-600 ">{task.name}</a>
               </Link>
             </th>
             <td className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-center ">
@@ -62,7 +62,9 @@ function CardTasksByIterationList(props) {
           </tr>
         ) : null
       )
-    : null;
+    ) : !iteration ? (
+      <WarningNoActiveIteration/>
+    ) : null;
 
   return (
     <>
