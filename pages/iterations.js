@@ -31,7 +31,7 @@ export default function Goals() {
         </div>
         <div className="w-full xl:w-4/12 px-4">
         
-          <CardIterationList iterations={iterations}/>
+          <CardIterationList/>
         </div>
       </div>
       {/*<div className="flex flex-wrap">
