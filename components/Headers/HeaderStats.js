@@ -133,15 +133,15 @@ export default function HeaderStats({ card, statsList, wizard }) {
   );
 
   function getContent() {
-    if (true) {
+    if (needsLoading && !needs) {
       return loadingContent;
     } else if (needs) {
-      if (data.length == 0) {
+      if (needs.length == 0) {
         console.log("butbut");
         return wizardButton;
-      } else if (data.length > 0) {
+      } else if (needs.length > 0) {
         console.log("aquiii");
-        return data.map((stat) => (
+        return needs.map((stat) => (
           <div key={stat.id} className="w-full lg:w-6/12 xl:w-1/5 px-2">
             <CardStats
               statSubtitle={stat.name}
