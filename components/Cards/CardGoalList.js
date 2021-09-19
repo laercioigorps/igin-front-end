@@ -3,9 +3,6 @@ import { useGoals } from "../../data/use-data";
 
 function CardGoalList(props) {
   const { goals, goalsLoading, goalsLoggedOut } = useGoals();
-
-  console.log("the data is");
-  console.log(goals ? goals : null);
   const list =
     goals && !goalsLoading && !goalsLoggedOut && !goals.detail ? (
       goals.map((goal) => (
