@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useGoals } from "../../data/use-data";
 
-function CardGoalList(props) {
+export default function CardGoalList(props) {
   const { goals, goalsLoading, goalsLoggedOut } = useGoals();
   const list =
     goals && !goalsLoading && !goalsLoggedOut && !goals.detail ? (
@@ -96,4 +96,4 @@ function CardGoalList(props) {
     </>
   );
 }
-export default CardGoalList;
+
