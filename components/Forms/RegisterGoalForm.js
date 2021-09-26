@@ -93,17 +93,11 @@ export default function RegisterForm(props) {
 
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mx-auto"
             type="submit"
           >
-            Sign In
+            Confirm
           </button>
-          <a
-            className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker"
-            href="#"
-          >
-            Forgot Password?
-          </a>
         </div>
       </form>
     </div>
