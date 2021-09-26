@@ -37,38 +37,36 @@ function CardTasksByGoalAndIterationList(props) {
   }
 
   const list =
-    tasks && iteration ? (
-      tasks.map((task) =>
-        task.iteration == iteration.id ? (
-          <tr
-            key={task.id}
-            className={
-              task.completed === true ? "line-through text-gray-600" : ""
-            }
-          >
-            <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left ">
-              <Link href={"/tasks/" + task.id}>
-                <a className="hover:text-blue-600 ">{task.name}</a>
-              </Link>
-            </th>
-            <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-              {task.step}
-            </td>
-            <td className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-center ">
-              <input
-                type="checkbox"
-                name={"task" + task.id}
-                id={task.id}
-                checked={task.completed === true ? "checked" : ""}
-                onChange={() => handleChange(task)}
-              />
-            </td>
-          </tr>
-        ) : null
-      )
-    ) : !iteration ? (
-      <WarningNoActiveIteration />
-    ) : null;
+    tasks && iteration
+      ? tasks.map((task) =>
+          task.iteration == iteration.id ? (
+            <tr
+              key={task.id}
+              className={
+                task.completed === true ? "line-through text-gray-600" : ""
+              }
+            >
+              <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-normal p-4 text-left ">
+                <Link href={"/tasks/" + task.id}>
+                  <a className="hover:text-blue-600 ">{task.name}</a>
+                </Link>
+              </th>
+              <td className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                {task.step}
+              </td>
+              <td className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap text-center ">
+                <input
+                  type="checkbox"
+                  name={"task" + task.id}
+                  id={task.id}
+                  checked={task.completed === true ? "checked" : ""}
+                  onChange={() => handleChange(task)}
+                />
+              </td>
+            </tr>
+          ) : null
+        )
+      : null;
 
   return (
     <>
@@ -98,23 +96,27 @@ function CardTasksByGoalAndIterationList(props) {
         </div>
         <div className="block w-full overflow-x-auto">
           {/* Projects table */}
-          <table className="items-center w-full bg-transparent border-collapse ">
-            <thead>
-              <tr>
-                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Tasks
-                </th>
-                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Step
-                </th>
+          {iteration ? (
+            <table className="items-center w-full bg-transparent border-collapse ">
+              <thead>
+                <tr>
+                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Tasks
+                  </th>
+                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Step
+                  </th>
 
-                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Completed
-                </th>
-              </tr>
-            </thead>
-            <tbody>{list}</tbody>
-          </table>
+                  <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Completed
+                  </th>
+                </tr>
+              </thead>
+              <tbody>{list}</tbody>
+            </table>
+          ) : (
+            <WarningNoActiveIteration />
+          )}
         </div>
       </div>
     </>
