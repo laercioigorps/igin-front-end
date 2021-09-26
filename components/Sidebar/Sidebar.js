@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from "react";
-import Link from 'next/link'
+import Link from "next/link";
 
 import NotificationDropdown from "../Dropdowns/NotificationDropdown.js";
 import UserDropdown from "../Dropdowns/UserDropdown.js";
@@ -20,12 +20,9 @@ export default function Sidebar() {
             <i className="fas fa-bars"></i>
           </button>
           {/* Brand */}
-          <Link
-            href="/"
-          >
-          <a className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-            >
-            Notus React
+          <Link href="/">
+            <a className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+              Notus React
             </a>
           </Link>
           {/* User */}
@@ -48,12 +45,10 @@ export default function Sidebar() {
             <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
               <div className="flex flex-wrap">
                 <div className="w-6/12">
-                  <Link
-                    href="/"
-                  >
-                  <a className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
-                    Notus React
-                  </a>
+                  <Link href="/">
+                    <a className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+                      Notus React
+                    </a>
                   </Link>
                 </div>
                 <div className="w-6/12 flex justify-end">
@@ -82,43 +77,31 @@ export default function Sidebar() {
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
             <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin Layout Pages
+              App Pages
             </h6>
             {/* Navigation */}
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link
-                  
-                  href="/dashboard"
-                >
-                <a className={
-                    "text-xs uppercase py-3 font-bold block text-lightBlue-500"
-                  }>
-                  <i
+                <Link href="/dashboard">
+                  <a
                     className={
-                      "fas fa-tv mr-2 text-sm "
+                      "text-xs uppercase py-3 font-bold block text-lightBlue-500"
                     }
-                  ></i>{" "}
-                  Dashboard
-                </a>
+                  >
+                    <i className={"fas fa-tv mr-2 text-sm "}></i> Dashboard
+                  </a>
                 </Link>
               </li>
               <li className="items-center">
-                <Link
-                  
-                  href="/needs"
-                >
-                <a className={
-                    "text-xs uppercase py-3 font-bold block text-lightBlue-500"
-                  }>
-                  <i
+                <Link href="/needs">
+                  <a
                     className={
-                      "fas fa-tv mr-2 text-sm "
+                      "text-xs uppercase py-3 font-bold block text-lightBlue-500"
                     }
-                  ></i>{" "}
-                  Needs
-                </a>
+                  >
+                    <i className={"fas fa-tv mr-2 text-sm "}></i> Needs
+                  </a>
                 </Link>
               </li>
 
@@ -143,113 +126,97 @@ export default function Sidebar() {
               </li>*/}
               <li className="items-center">
                 <Link
-                  className={
-                    "text-xs uppercase py-3 font-bold block "
-                  }
+                  className={"text-xs uppercase py-3 font-bold block "}
                   href="/goals"
                 >
-                <a className={
-                    "text-xs uppercase py-3 font-bold block "
-                  }>
-                  <i
-                    className={
-                      "fas fa-tools mr-2 text-sm text-blueGray-300"
-                    }
-                  ></i>{" "}
-                  Goals
-                </a>
+                  <a className={"text-xs uppercase py-3 font-bold block "}>
+                    <i
+                      className={"fas fa-tools mr-2 text-sm text-blueGray-300"}
+                    ></i>{" "}
+                    Goals
+                  </a>
                 </Link>
               </li>
 
               <li className="items-center">
-                <Link
-                  
-                  href="/iterations"
-                >
-                <a className={
-                    "text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500 "
-                  }>
-                  <i
+                <Link href="/iterations">
+                  <a
                     className={
-                      "fas fa-table mr-2 text-sm text-blueGray-300"
+                      "text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500 "
                     }
-                  ></i>{" "}
-                  Iterations
-                </a>
+                  >
+                    <i
+                      className={"fas fa-table mr-2 text-sm text-blueGray-300"}
+                    ></i>{" "}
+                    Iterations
+                  </a>
                 </Link>
               </li>
 
               <li className="items-center">
-                <Link
-                  
-                  href="/tasks"
-                >
-                <a className={
-                    "text-xs uppercase py-3 font-bold block text-lightBlue-500"
-                  }>
-                  <i
+                <Link href="/tasks">
+                  <a
                     className={
-                      "fas fa-map-marked mr-2 text-sm text-blueGray-300"
+                      "text-xs uppercase py-3 font-bold block text-lightBlue-500"
                     }
-                  ></i>{" "}
-                  Tasks
-                </a>
+                  >
+                    <i
+                      className={
+                        "fas fa-map-marked mr-2 text-sm text-blueGray-300"
+                      }
+                    ></i>{" "}
+                    Tasks
+                  </a>
                 </Link>
               </li>
             </ul>
 
             {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
+            {/* <hr className="my-4 md:min-w-full" /> */}
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            {/* <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               Auth Layout Pages
-            </h6>
+            </h6> */}
             {/* Navigation */}
 
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            {/* <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
-                <Link
-                  
-                  href="/auth/login"
-                >
-                <a className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
-                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Login
-                </a>
+                <Link href="/auth/login">
+                  <a className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
+                    <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
+                    Login
+                  </a>
                 </Link>
               </li>
 
               <li className="items-center">
-                <Link
-                  
-                  href="/auth/register"
-                >
-                <a className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
-                  <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
-                  Register
-                </a>
+                <Link href="/auth/register">
+                  <a className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
+                    <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
+                    Register
+                  </a>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
+            {/* <hr className="my-4 md:min-w-full" /> */}
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            {/* <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               No Layout Pages
-            </h6>
+            </h6> */}
             {/* Navigation */}
 
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            {/* <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                   href="/landing"
                 >
-                <a>
-                  <i className="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Landing Page
-                </a>
+                  <a>
+                    <i className="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>{" "}
+                    Landing Page
+                  </a>
                 </Link>
               </li>
 
@@ -258,22 +225,22 @@ export default function Sidebar() {
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                   href="/profile"
                 >
-                <a>
-                  <i className="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Profile Page
+                  <a>
+                    <i className="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>{" "}
+                    Profile Page
                   </a>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
-            {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
+            {/* Divider
+            <hr className="my-4 md:min-w-full" /> */}
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            {/* <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               Documentation
-            </h6>
+            </h6> */}
             {/* Navigation */}
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            {/* {<ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="inline-flex">
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/react/colors/notus"
@@ -361,7 +328,7 @@ export default function Sidebar() {
                   VueJS
                 </a>
               </li>
-            </ul>
+            </ul>} */}
           </div>
         </div>
       </nav>
