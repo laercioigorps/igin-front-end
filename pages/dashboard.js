@@ -13,6 +13,7 @@ import CardGoalList from "../components/Cards/CardGoalList.js";
 export default function Dashboard() {
   // if logged out, redirect to the homepage
   const { user, loading, loggedOut } = useUser();
+  console.log(user)
   const router = useRouter();
   useEffect(() => (loggedOut ? router.push("/auth/login") : null));
   //const { data, loading, loggedOut} = useNeeds();
