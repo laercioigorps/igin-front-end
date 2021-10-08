@@ -58,7 +58,7 @@ export default function RegisterForm(props) {
 						Register
 					</button>
 					<a className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
-						Login
+						Already has an account?
 					</a>
 				</div>
 			</form>
