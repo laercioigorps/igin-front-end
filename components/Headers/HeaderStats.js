@@ -140,7 +140,7 @@ export default function HeaderStats({ card, statsList, wizard }) {
           <div key={stat.id} className="w-full lg:w-6/12 xl:w-1/5 px-2">
             <CardStats
               statSubtitle={stat.name}
-              statTitle="5.0"
+              statTitle="--"
               statArrow={stat.statArrow}
               statPercent="-"
               statPercentColor={stat.statPercentColor}
