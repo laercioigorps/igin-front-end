@@ -7,12 +7,7 @@ import CardStats from "../Cards/CardStats.js";
 
 export default function HeaderStats({ card, statsList, wizard }) {
   const { needs, needsLoading, needsLoggedOut, needsError } = useNeeds();
-  console.log("needsData");
-  console.log(needs);
-  console.log("needsLoading");
-  console.log(needsLoading);
-  console.log("needsLoggedOut");
-  console.log(needsLoggedOut);
+  
 
   const wizardSetup = async (event) => {
     event.preventDefault(); // don't redirect the page
@@ -95,7 +90,7 @@ export default function HeaderStats({ card, statsList, wizard }) {
         </div>
         <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
           <CardStats
-            statSubtitle="PROFESsional"
+            statSubtitle="PROFESSIONAL"
             statTitle="--"
             statArrow="down"
             statPercent="-"
@@ -150,8 +145,8 @@ export default function HeaderStats({ card, statsList, wizard }) {
               statPercent="-"
               statPercentColor={stat.statPercentColor}
               statDescripiron="------"
-              statIconName={stat.statIconName}
-              statIconColor={stat.statIconColor}
+              statIconName={stat.iconName}
+              statIconColor={stat.iconColor}
             />
           </div>
         ));
