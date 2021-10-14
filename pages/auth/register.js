@@ -87,7 +87,8 @@ export default function Login(){
 		    <Layout cond='false' card="off">
 
 		      <div className="relative flex flex-col min-w-0 break-words bg-white mb-6 shadow-lg rounded lg:w-2/5 mx-auto">
-		        <RegisterForm 
+		        <RegisterForm
+				loginURL= "/auth/login"
 		        onClick={logUser} 
 		        usernameError={usernameError}
 		        emailError={emailError}
