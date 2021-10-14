@@ -241,9 +241,9 @@ export function useTask(id) {
   const loading = !data && !error;
 
   return {
-    loading,
-    loggedOut,
-    data: data,
+    taskLoading : loading,
+    taskLoggedOut : loggedOut,
+    task: data,
   };
 }
 
