@@ -148,7 +148,7 @@ export function useNeeds() {
   const loggedOut = !(
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
-  const { data, error } = useSWR(
+  const { data, error, mutate } = useSWR(
     !loggedOut ? ["http://127.0.0.1:8000/need/", localStorage.token] : null,
     fetcher
   );
@@ -160,6 +160,7 @@ export function useNeeds() {
     needsLoggedOut: loggedOut,
     needs: data,
     needsError: error,
+    needsMutate : mutate,
   };
 }
 
