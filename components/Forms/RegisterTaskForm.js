@@ -44,7 +44,7 @@ export default function RegisterTaskForm(props) {
 
         {props.task ? (
           <>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
                 htmlFor="step"
@@ -73,7 +73,7 @@ export default function RegisterTaskForm(props) {
                 placeholder="your step here"
                 defaultValue={props.task ? props.task.iteration : ""}
               />
-            </div>
+            </div> */}
             <div className="mb-4">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
@@ -85,7 +85,7 @@ export default function RegisterTaskForm(props) {
                 className=""
                 id="completed"
                 type="checkbox"
-                defaultChecked={props.task ? props.task.iteration : ""}
+                defaultChecked={props.task ? props.task.completed : ""}
               />
             </div>{" "}
           </>
