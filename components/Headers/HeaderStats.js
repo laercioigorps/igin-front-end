@@ -1,13 +1,14 @@
 import React from "react";
 import { useNeeds } from "../../data/use-data";
+import { useRouter } from "next/router";
 
 // components
 
 import CardStats from "../Cards/CardStats.js";
 
 export default function HeaderStats({ card, statsList, wizard }) {
-  const { needs, needsLoading, needsLoggedOut, needsError } = useNeeds();
-  
+  const { needs, needsLoading, needsLoggedOut, needsError, needsMutate } = useNeeds();
+  const router = useRouter();
 
   const wizardSetup = async (event) => {
     event.preventDefault(); // don't redirect the page
@@ -21,18 +22,7 @@ export default function HeaderStats({ card, statsList, wizard }) {
       method: "POST",
     });
 
-    const result = await res.json();
-
-    console.log(result);
-    if (result.key) {
-      console.log(result.key);
-      localStorage.setItem("token", result.key);
-      if (localStorage.token) {
-        router.push("/dashboard");
-      }
-    } else {
-      console.log(result);
-    }
+    needsMutate()
   };
 
   const wizardButton = (
@@ -64,66 +54,66 @@ export default function HeaderStats({ card, statsList, wizard }) {
 
   const loadingContent = (
     <>
-        <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
-          <CardStats
-            statSubtitle="HEALTH"
-            statTitle="--"
-            statArrow="down"
-            statPercent="--"
-            statPercentColor="text-yellow-500"
-            statDescripiron="last month"
-            statIconName="far fa-heart"
-            statIconColor="bg-red-500"
-          />
-        </div>
-        <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
-          <CardStats
-            statSubtitle="FINANCE"
-            statTitle="--"
-            statArrow="down"
-            statPercent="-"
-            statPercentColor="text-red-500"
-            statDescripiron="Since last week"
-            statIconName="far fa-chart-bar"
-            statIconColor="bg-red-500"
-          />
-        </div>
-        <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
-          <CardStats
-            statSubtitle="PROFESSIONAL"
-            statTitle="--"
-            statArrow="down"
-            statPercent="-"
-            statPercentColor="text-orange-500"
-            statDescripiron="yesterday"
-            statIconName="fas fa-user-tie"
-            statIconColor="bg-pink-500"
-          />
-        </div>
-        <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
-          <CardStats
-            statSubtitle="MIND"
-            statTitle="--"
-            statArrow="up"
-            statPercent="-"
-            statPercentColor="text-emerald-500"
-            statDescripiron="Since last month"
-            statIconName="fas fa-code-branch"
-            statIconColor="bg-red-500"
-          />
-        </div>
-        <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
-          <CardStats
-            statSubtitle="OTHERS"
-            statTitle="--"
-            statArrow="up"
-            statPercent="-"
-            statPercentColor="text-green-500"
-            statDescripiron="last month"
-            statIconName="far fa-handshake"
-            statIconColor="bg-red-500"
-          />
-        </div>
+      <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
+        <CardStats
+          statSubtitle="HEALTH"
+          statTitle="--"
+          statArrow="down"
+          statPercent="--"
+          statPercentColor="text-yellow-500"
+          statDescripiron="last month"
+          statIconName="far fa-heart"
+          statIconColor="bg-red-500"
+        />
+      </div>
+      <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
+        <CardStats
+          statSubtitle="FINANCE"
+          statTitle="--"
+          statArrow="down"
+          statPercent="-"
+          statPercentColor="text-red-500"
+          statDescripiron="Since last week"
+          statIconName="far fa-chart-bar"
+          statIconColor="bg-red-500"
+        />
+      </div>
+      <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
+        <CardStats
+          statSubtitle="PROFESSIONAL"
+          statTitle="--"
+          statArrow="down"
+          statPercent="-"
+          statPercentColor="text-orange-500"
+          statDescripiron="yesterday"
+          statIconName="fas fa-user-tie"
+          statIconColor="bg-pink-500"
+        />
+      </div>
+      <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
+        <CardStats
+          statSubtitle="MIND"
+          statTitle="--"
+          statArrow="up"
+          statPercent="-"
+          statPercentColor="text-emerald-500"
+          statDescripiron="Since last month"
+          statIconName="fas fa-code-branch"
+          statIconColor="bg-red-500"
+        />
+      </div>
+      <div className="w-full lg:w-6/12 xl:w-1/5 px-2">
+        <CardStats
+          statSubtitle="OTHERS"
+          statTitle="--"
+          statArrow="up"
+          statPercent="-"
+          statPercentColor="text-green-500"
+          statDescripiron="last month"
+          statIconName="far fa-handshake"
+          statIconColor="bg-red-500"
+        />
+      </div>
     </>
   );
 
