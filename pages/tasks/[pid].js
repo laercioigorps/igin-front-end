@@ -7,7 +7,7 @@ import { useTask } from "../../data/use-data";
 const Post = () => {
   const router = useRouter();
   const { pid } = router.query;
-  const { task } = useTask(pid ? pid : null);
+  const { task, taskMutate } = useTask(pid ? pid : null);
   console.log(task);
 
   const stats = task
@@ -98,6 +98,7 @@ const Post = () => {
 
     console.log(result);
     if (result.id) {
+      taskMutate()
       router.push("/goals/steps/" + task.step);
     } else {
       console.log(result.need);
