@@ -1,4 +1,5 @@
 import { useIterations } from "../../data/use-data";
+import Link from "next/dist/client/link";
 
 function CardTaskList(props) {
   const { iterations, iterationsLoading, iterationsError } = useIterations();
@@ -8,12 +9,9 @@ function CardTaskList(props) {
     ? iterations.map((iteration) => (
         <tr key={iteration.id}>
           <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-            <a
-              className="hover:text-blue-600"
-              href={"/iterations/" + iteration.id}
-            >
-              {iteration.number}
-            </a>
+            <Link href={"/iterations/" + iteration.id}>
+              <a className="hover:text-blue-600">{iteration.number}</a>
+            </Link>
           </th>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             {iteration.date}
