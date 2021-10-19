@@ -3,20 +3,20 @@ import Layout from "../../components/layout";
 import LoginForm from "../../components/auth/LoginForm";
 import RegisterTaskForm from "../../components/Forms/RegisterTaskForm";
 import { useIteration, useTask } from "../../data/use-data";
+import CardTasksByIterationList from "../../components/Cards/CardTasksByIterationList";
 
 const Post = () => {
   const router = useRouter();
   const { id } = router.query;
   //const { task, taskMutate } = useTask(pid ? pid : null);
-  const { iteration, iterationLoading } = useIteration(id? id : null)
-  
-
+  const { iteration, iterationLoading } = useIteration(id ? id : null);
+    
   const stats = iteration
     ? [
         {
           id: 1,
-          statSubtitle: "Status",
-          statTitle: "Inactive",
+          statSubtitle: "Iteration",
+          statTitle: iteration ? iteration.id : "none",
           statArrow: "down",
           statPercent: "3.48",
           statPercentColor: "text-yellow-500",
@@ -26,8 +26,8 @@ const Post = () => {
         },
         {
           id: 2,
-          statSubtitle: "Need",
-          statTitle: "---",
+          statSubtitle: "Status",
+          statTitle: iteration.completed ? "Done": "active",
           statArrow: "down",
           statPercent: "3.48",
           statPercentColor: "text-yellow-500",
@@ -37,8 +37,8 @@ const Post = () => {
         },
         {
           id: 3,
-          statSubtitle: "Iteration",
-          statTitle: "None",
+          statSubtitle: "End-Date",
+          statTitle: iteration ? iteration.date : "",
           statArrow: "down",
           statPercent: "3.48",
           statPercentColor: "text-yellow-500",
@@ -71,39 +71,6 @@ const Post = () => {
       ]
     : [];
 
-  const edit = async (event) => {
-    event.preventDefault(); // don't redirect the page
-    // where we'll add our form logic
-
-    const res = await fetch("http://127.0.0.1:8000/delivery/" + pid + "/", {
-      body: JSON.stringify({
-        name: event.target.name.value,
-        description: event.target.description.value,
-        iteration: iteration.id,
-        step: iteration.id,
-        completed: event.target.completed.checked,
-
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "PUT",
-    });
-
-    const result = await res.json();
-
-    console.log(result);
-    if (result.id) {
-      
-      router.push("/goals/steps/" + iteration.id);
-    } else {
-      console.log(result.need);
-      error = result.need;
-    }
-  };
-
-
   return (
     <>
       <Layout statsList={stats}>
@@ -115,10 +82,9 @@ const Post = () => {
         </div>
       </div>*/}
           <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto">
-            {/* <CardTasksByStepList tasks={tasks} step={pid} /> */}
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-3/4 mb-6 shadow-lg rounded mx-auto">
-              
-            </div>
+            
+            <CardTasksByIterationList iteration= {id ? id : null}/>
+            <div className="relative flex flex-col min-w-0 break-words bg-white w-3/4 mb-6 shadow-lg rounded mx-auto"></div>
           </div>
         </div>
         {/*<div className="flex flex-wrap">
