@@ -160,7 +160,7 @@ export function useNeeds() {
     needsLoggedOut: loggedOut,
     needs: data,
     needsError: error,
-    needsMutate : mutate,
+    needsMutate: mutate,
   };
 }
 
@@ -232,7 +232,7 @@ export function useTask(id) {
   const loggedOut = !(
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
-  const { data, error } = useSWR(
+  const { data, error, mutate } = useSWR(
     !loggedOut && id
       ? ["http://127.0.0.1:8000/delivery/" + id, localStorage.token]
       : null,
@@ -242,9 +242,10 @@ export function useTask(id) {
   const loading = !data && !error;
 
   return {
-    taskLoading : loading,
-    taskLoggedOut : loggedOut,
+    taskLoading: loading,
+    taskLoggedOut: loggedOut,
     task: data,
+    taskMutate: mutate,
   };
 }
 
