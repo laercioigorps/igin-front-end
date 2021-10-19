@@ -89,7 +89,7 @@ export function useIteration(id) {
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
   const { data, error } = useSWR(
-    !loggedOut
+    !loggedOut && id
       ? ["http://127.0.0.1:8000/iteration/" + id + "/", localStorage.token]
       : null,
     fetcher
@@ -99,7 +99,7 @@ export function useIteration(id) {
 
   return {
     iterationLoading: loading,
-    iterationLoggedOut: loggedOut,
+    loggedOut,
     iteration: data,
     iterationError: error,
   };
