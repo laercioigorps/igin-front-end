@@ -1,10 +1,16 @@
-import { useActiveIteration, useTasksByIteration } from "../../data/use-data";
+import {
+  useActiveIteration,
+  useIteration,
+  useTasksByIteration,
+} from "../../data/use-data";
 import Link from "next/link";
 import WarningNoActiveIteration from "../warnings/WarningNoActiveIteration";
 
 function CardTasksByIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
-    useActiveIteration();
+    props.iteration
+      ? useIteration(props.iteration ? props.iteration : null)
+      : useActiveIteration();
   const { tasks, tasksLoading, tasksError, tasksLoggedOut, tasksMutate } =
     useTasksByIteration(iteration ? iteration.id : null);
 
@@ -38,7 +44,11 @@ function CardTasksByIterationList(props) {
   const list =
     tasks && iteration ? (
       tasks.map((task) =>
-        task.iteration == iteration.id && !task.completed ? (
+        (
+          task.iteration == iteration.id && props.iteration
+            ? true
+            : !task.completed
+        ) ? (
           <tr
             key={task.id}
             className={
@@ -63,7 +73,7 @@ function CardTasksByIterationList(props) {
         ) : null
       )
     ) : !iteration ? (
-      <WarningNoActiveIteration/>
+      <WarningNoActiveIteration />
     ) : null;
 
   return (
