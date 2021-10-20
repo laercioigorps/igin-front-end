@@ -93,7 +93,7 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link href="/needs">
                   <a
                     className={
@@ -103,7 +103,7 @@ export default function Sidebar() {
                     <i className={"fas fa-tv mr-2 text-sm "}></i> Needs
                   </a>
                 </Link>
-              </li>
+              </li> */}
 
               {/*<li className="items-center">
                 <Link
@@ -153,7 +153,7 @@ export default function Sidebar() {
                 </Link>
               </li>
 
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link href="/tasks">
                   <a
                     className={
@@ -168,7 +168,7 @@ export default function Sidebar() {
                     Tasks
                   </a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
 
             {/* Divider */}
