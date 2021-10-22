@@ -8,23 +8,18 @@ import Layout from "../../../components/layout.js";
 import CardTasksByStepList from "../../../components/Cards/CardTasksByStepList.js";
 import CardTasksByStepAndIterationList from "../../../components/Cards/CardTasksByStepAndIterationList";
 import CardTasksList from "../../../components/Cards/CardTasksList.js";
+import { useGoal, useStep } from "../../../data/use-data.js";
 
 export default function Goals() {
   const router = useRouter();
   const { pid } = router.query;
 
-  const steps = [
-    { id: 1, name: "Learn that", endDate: "2021-08-02", need: 1 },
-    {
-      id: 2,
-      name: "Build a project using that",
-      endDate: "2021-08-02",
-      need: 1,
-    },
-    { id: 3, name: "my description", endDate: "2021-08-02", need: 2 },
-    { id: 4, name: "my description", endDate: "2021-08-02", need: 3 },
-  ];
+  const {step} = useStep(pid ? pid : null)
+  const{goal} = useGoal(step ? step.goal : null)
+  console.log(step)
+  console.log(goal)
 
+  
   const tasks = [
     {
       id: 1,
@@ -110,7 +105,7 @@ export default function Goals() {
     {
       id: 2,
       statSubtitle: "Need",
-      statTitle: "Health",
+      statTitle: goal ? goal.need.name.substring(0,10) : "",
       statArrow: "down",
       statPercent: "3.48",
       statPercentColor: "text-yellow-500",
@@ -121,7 +116,7 @@ export default function Goals() {
     {
       id: 3,
       statSubtitle: "completed",
-      statTitle: "50%",
+      statTitle: step ? step.percentageCompleted.substring(0,5) : "",
       statArrow: "up",
       statPercent: "3.48",
       statPercentColor: "text-yellow-500",
