@@ -17,7 +17,7 @@ function CardTaskList(props) {
             {iteration.date}
           </td>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            {iteration.completed}
+            {iteration.completed ? "True" : "False"}
           </td>
         </tr>
       ))
