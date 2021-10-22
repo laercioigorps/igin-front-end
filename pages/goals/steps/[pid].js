@@ -14,12 +14,9 @@ export default function Goals() {
   const router = useRouter();
   const { pid } = router.query;
 
-  const {step} = useStep(pid ? pid : null)
-  const{goal} = useGoal(step ? step.goal : null)
-  console.log(step)
-  console.log(goal)
+  const { step, stepMutate } = useStep(pid ? pid : null);
+  const { goal } = useGoal(step ? step.goal : null);
 
-  
   const tasks = [
     {
       id: 1,
@@ -94,7 +91,7 @@ export default function Goals() {
     {
       id: 1,
       statSubtitle: "Status",
-      statTitle: "Active",
+      statTitle: step ? (step.completed ? "Completed" : "Active") : "",
       statArrow: "down",
       statPercent: "3.48",
       statPercentColor: "text-yellow-500",
@@ -105,7 +102,7 @@ export default function Goals() {
     {
       id: 2,
       statSubtitle: "Need",
-      statTitle: goal ? goal.need.name.substring(0,10) : "",
+      statTitle: goal ? goal.need.name.substring(0, 10) : "",
       statArrow: "down",
       statPercent: "3.48",
       statPercentColor: "text-yellow-500",
@@ -116,7 +113,7 @@ export default function Goals() {
     {
       id: 3,
       statSubtitle: "completed",
-      statTitle: step ? step.percentageCompleted.substring(0,5) : "",
+      statTitle: step ? step.percentageCompleted.substring(0, 5) : "",
       statArrow: "up",
       statPercent: "3.48",
       statPercentColor: "text-yellow-500",
@@ -161,7 +158,11 @@ export default function Goals() {
             <CardTasksByStepList tasks={tasks} step={pid} />
           </div>
           <div className="w-full xl:w-4/12 px-4">
-            <CardTasksByStepAndIterationList tasks={todo} step={pid} />
+            <CardTasksByStepAndIterationList
+              tasks={todo}
+              step={pid}
+              mutateStep={() => stepMutate()}
+            />
           </div>
         </div>
         {/*<div className="flex flex-wrap">
