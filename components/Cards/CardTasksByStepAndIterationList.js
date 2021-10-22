@@ -34,6 +34,7 @@ function CardTasksByStepAndIterationList(props) {
     } else {
       console.log(result);
     }
+    props.mutateStep();
     tasksMutate();
   }
 
