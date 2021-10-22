@@ -189,7 +189,7 @@ export function useStep(id) {
   const loggedOut = !(
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
-  const { data, error } = useSWR(
+  const { data, error, mutate } = useSWR(
     !loggedOut && id
       ? ["http://127.0.0.1:8000/step/" + id, localStorage.token]
       : null,
@@ -203,6 +203,7 @@ export function useStep(id) {
     stepLoading: loading,
     stepLoggedOut: loggedOut,
     step: data,
+    stepMutate : mutate,
   };
 }
 
