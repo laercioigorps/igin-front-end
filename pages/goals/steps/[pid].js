@@ -9,6 +9,7 @@ import CardTasksByStepList from "../../../components/Cards/CardTasksByStepList.j
 import CardTasksByStepAndIterationList from "../../../components/Cards/CardTasksByStepAndIterationList";
 import CardTasksList from "../../../components/Cards/CardTasksList.js";
 import { useGoal, useStep } from "../../../data/use-data.js";
+import Link from "next/link";
 
 export default function Goals() {
   const router = useRouter();
@@ -123,14 +124,18 @@ export default function Goals() {
     },
     {
       id: 4,
-      statSubtitle: "",
-      statTitle: "",
-      statArrow: "",
-      statPercent: "",
-      statPercentColor: "",
-      statDescripiron: "",
-      statIconName: "",
-      statIconColor: "",
+      statSubtitle: "Goal",
+      statTitle: (
+        <Link href={step ? "/goals/" + step.goal : "#"}>
+          <a className="text-blue-300">{step ? step.goal : ""}</a>
+        </Link>
+      ),
+      statArrow: "up",
+      statPercent: "3.48",
+      statPercentColor: "text-yellow-500",
+      statDescripiron: "last month",
+      statIconName: "far fa-heart",
+      statIconColor: "bg-red-500",
     },
     {
       id: 5,
