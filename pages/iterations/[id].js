@@ -16,7 +16,7 @@ const Post = () => {
         {
           id: 1,
           statSubtitle: "Iteration",
-          statTitle: iteration ? iteration.id : "none",
+          statTitle: iteration ? iteration.number : "none",
           statArrow: "down",
           statPercent: "3.48",
           statPercentColor: "text-yellow-500",
@@ -83,7 +83,7 @@ const Post = () => {
       </div>*/}
           <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto">
             
-            <CardTasksByIterationList iteration= {id ? id : null}/>
+            <CardTasksByIterationList iteration= {id ? id : null} edit={iteration ? "/edit/iteration/"+ iteration.id : null}/>
             <div className="relative flex flex-col min-w-0 break-words bg-white w-3/4 mb-6 shadow-lg rounded mx-auto"></div>
           </div>
         </div>
