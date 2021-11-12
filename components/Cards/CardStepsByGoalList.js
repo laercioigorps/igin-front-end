@@ -13,7 +13,7 @@ function CardStepsByGoalList(props) {
             </Link>
           </th>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            5/50
+            {data ? data.completed ? "Y" : "N" : ""}
           </td>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             Active
