@@ -34,12 +34,20 @@ function CardTaskList(props) {
               </h3>
             </div>
             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-              <button
+              <Link href={"/iterations/register/"}>
+                <button
+                  className="bg-green-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 "
+                  type="button"
+                >
+                  Add new
+                </button>
+              </Link>
+              {/* <button
                 className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
               >
                 See all
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
