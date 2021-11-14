@@ -4,37 +4,25 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useNeeds, useStep } from "../../../data/use-data";
 import DeleteButton from "../../../components/Button/DeleteButton";
-
+import { editStep } from "../../../data/edit-data";
 
 export default function EditStep() {
   const router = useRouter();
   const { id } = router.query;
   const { step, stepLoading, stepError } = useStep(id ? id : null);
-  console.log("aiaiai");
-  console.log(step);
   var error = "";
 
   const edit = async (event) => {
     event.preventDefault(); // don't redirect the page
     // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/step/" + id + "/", {
-      body: JSON.stringify({
-        name: event.target.name.value,
-        description: event.target.description.value,
-        completed: step.completed,
-        goal: step.goal,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "PUT",
-    });
+    const name = event.target.name.value;
+    const description = event.target.description.value;
+    const completed = step.completed;
+    const goal = step.goal;
 
-    const result = await res.json();
+    const result = await editStep(id, name, description, completed, goal);
 
-    console.log(result);
     if (result.id) {
       router.push({
         pathname: "/goals/steps/[id]",
