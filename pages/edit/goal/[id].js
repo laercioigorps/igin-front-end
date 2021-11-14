@@ -5,6 +5,8 @@ import React from "react";
 import { useNeeds, useGoal } from "../../../data/use-data";
 import DeleteButton from "../../../components/Button/DeleteButton";
 import {editGoal} from "../../../data/edit-data"
+import { deleteGoal } from "../../../data/delete-data";
+
 
 export default function EditGoal() {
   const router = useRouter();
@@ -30,17 +32,11 @@ export default function EditGoal() {
     }
   };
 
-  const deleteGoal = async (event) => {
+  const delGoal = async (event) => {
     event.preventDefault(); // don't redirect the page
     // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/goal/" + id + "/", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "DELETE",
-    });
+    const resp = deleteGoal(id)
     router.push({
       pathname: "/goals/",
     });
@@ -53,7 +49,7 @@ export default function EditGoal() {
           <RegisterForm onClick={edit} error={error} goal={goal} />
         </div>
         <div className="relative flex flex-col min-w-0 break-words bg-white mb-6 shadow-lg rounded lg:w-2/5 mx-auto">
-          <DeleteButton onClick={deleteGoal} />
+          <DeleteButton onClick={delGoal} />
         </div>
       </Layout>
     </>
