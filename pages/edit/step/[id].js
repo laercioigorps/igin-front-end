@@ -5,6 +5,7 @@ import React from "react";
 import { useNeeds, useStep } from "../../../data/use-data";
 import DeleteButton from "../../../components/Button/DeleteButton";
 import { editStep } from "../../../data/edit-data";
+import { deleteStep } from "../../../data/delete-data";
 
 export default function EditStep() {
   const router = useRouter();
@@ -34,17 +35,11 @@ export default function EditStep() {
     }
   };
 
-  const deleteStep = async (event) => {
+  const delStep = async (event) => {
     event.preventDefault(); // don't redirect the page
     // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/step/" + id + "/", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "DELETE",
-    });
+    const resp = deleteStep(id)
     router.push({
       pathname: "/goals/[id]",
       query: { id: step.goal },
@@ -58,7 +53,7 @@ export default function EditStep() {
           <RegisterStepForm onClick={edit} error={error} step={step} />
         </div>
         <div className="relative flex flex-col min-w-0 break-words bg-white mb-6 shadow-lg rounded lg:w-2/5 mx-auto">
-          <DeleteButton onClick={deleteStep} />
+          <DeleteButton onClick={delStep} />
         </div>
       </Layout>
     </>
