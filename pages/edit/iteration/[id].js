@@ -3,35 +3,27 @@ import Layout from "../../../components/layout.js";
 import { useRouter } from "next/router";
 import React from "react";
 import { useIteration } from "../../../data/use-data.js";
+import { editIteration } from "../../../data/edit-data.js";
 
 export default function EditGoal() {
   const router = useRouter();
   const { id } = router.query;
-  const { iteration, iterationLoading, iterationError } = useIteration(id ? id : null);
-  console.log("aiaiai")
-  console.log(iteration)
+  const { iteration, iterationLoading, iterationError } = useIteration(
+    id ? id : null
+  );
+  console.log("aiaiai");
+  console.log(iteration);
   var error = "";
 
   const edit = async (event) => {
     event.preventDefault(); // don't redirect the page
-    // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/iteration/"+id+"/", {
-      body: JSON.stringify({
-        number: event.target.number.value,
-        date: event.target.date.value,
-        completed: event.target.completed.checked,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "PUT",
-    });
+    const number = event.target.number.value;
+    const date = event.target.date.value;
+    const completed = event.target.completed.checked;
 
-    const result = await res.json();
+    const result = await editIteration(id, number, date, completed);
 
-    console.log(result);
     if (result.id) {
       router.push("/iterations");
     } else {
