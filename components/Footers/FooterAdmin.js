@@ -11,10 +11,10 @@ export default function FooterAdmin() {
               <div className="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
                 Copyright © {new Date().getFullYear()}{" "}
                 <a
-                  href="https://www.creative-tim.com?ref=nr-footer-admin"
+                  href="https://laerciosouza.vercel.app/"
                   className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 >
-                  Creative Tim
+                  Laercio Souza
                 </a>
               </div>
             </div>
@@ -22,21 +22,21 @@ export default function FooterAdmin() {
               <ul className="flex flex-wrap list-none md:justify-end  justify-center">
                 <li>
                   <a
-                    href="https://www.creative-tim.com?ref=nr-footer-admin"
+                    href="https://laerciosouza.vercel.app/"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    Creative Tim
+                    Portifolio
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=nr-footer-admin"
+                    href="https://github.com/laercioigorps"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
                   >
-                    About Us
+                    Github 
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a
                     href="http://blog.creative-tim.com?ref=nr-footer-admin"
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
@@ -51,7 +51,7 @@ export default function FooterAdmin() {
                   >
                     MIT License
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
