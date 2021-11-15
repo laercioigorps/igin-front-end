@@ -1,9 +1,9 @@
-import RegisterForm from "../../components/forms/RegisterGoalForm.js";
-import Layout from "../../components/layout.js";
+import RegisterForm from "../../components/forms/RegisterGoalForm";
+import Layout from "../../components/layout";
 import { useRouter } from "next/router";
 import React from "react";
 import useNeeds from "../../data/use-data";
-import { registerGoal } from "../../data/create-data.js";
+import { registerGoal } from "../../data/create-data";
 
 export default function Register() {
   const router = useRouter();
