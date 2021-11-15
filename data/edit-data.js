@@ -54,3 +54,30 @@ export const editStep = async (id, name, description, completed, goal) => {
   const result = await res.json();
   return result;
 };
+
+export const editTask = async (
+  id,
+  name,
+  description,
+  iteration,
+  step,
+  completed
+) => {
+  const res = await fetch("http://127.0.0.1:8000/delivery/" + id + "/", {
+    body: JSON.stringify({
+      name: name,
+      description: description,
+      iteration: iteration,
+      step: step,
+      completedi: completed,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Token " + localStorage.token,
+    },
+    method: "PUT",
+  });
+
+  const result = await res.json();
+  return result;
+};
