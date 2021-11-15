@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import { URL } from "./api";
 
 const fetcher = async (url, token) => {
   const res = await fetch(url, {
@@ -26,9 +27,7 @@ export function useUser() {
   );
 
   const { data, error } = useSWR(
-    !loggedOut
-      ? ["http://127.0.0.1:8000/rest-auth/user/", localStorage.token]
-      : null,
+    !loggedOut ? [URL + "/rest-auth/user/", localStorage.token] : null,
     fetcher
   );
   //const { data, error } = useSWR( ()=>(["http://127.0.0.1:8000/rest-auth/user/", localStorage.token]), fetcher);
@@ -47,9 +46,7 @@ export function useActiveIteration() {
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
   const { data, error } = useSWR(
-    !loggedOut
-      ? ["http://127.0.0.1:8000/iteration/active/", localStorage.token]
-      : null,
+    !loggedOut ? [URL + "/iteration/active/", localStorage.token] : null,
     fetcher
   );
 
@@ -68,9 +65,7 @@ export function useIterations() {
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
   const { data, error } = useSWR(
-    !loggedOut
-      ? ["http://127.0.0.1:8000/iteration/", localStorage.token]
-      : null,
+    !loggedOut ? [URL + "/iteration/", localStorage.token] : null,
     fetcher
   );
 
@@ -90,7 +85,7 @@ export function useIteration(id) {
   );
   const { data, error } = useSWR(
     !loggedOut && id
-      ? ["http://127.0.0.1:8000/iteration/" + id + "/", localStorage.token]
+      ? [URL + "/iteration/" + id + "/", localStorage.token]
       : null,
     fetcher
   );
@@ -110,7 +105,7 @@ export function useGoals() {
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
   const { data, error } = useSWR(
-    !loggedOut ? ["http://127.0.0.1:8000/goal/", localStorage.token] : null,
+    !loggedOut ? [URL + "/goal/", localStorage.token] : null,
     fetcher
   );
 
@@ -128,9 +123,7 @@ export function useGoal(id) {
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
   const { data, error } = useSWR(
-    !loggedOut && id
-      ? ["http://127.0.0.1:8000/goal/" + id, localStorage.token]
-      : null,
+    !loggedOut && id ? [URL + "/goal/" + id, localStorage.token] : null,
     fetcher
   );
 
@@ -149,7 +142,7 @@ export function useNeeds() {
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
   const { data, error, mutate } = useSWR(
-    !loggedOut ? ["http://127.0.0.1:8000/need/", localStorage.token] : null,
+    !loggedOut ? [URL + "/need/", localStorage.token] : null,
     fetcher
   );
 
@@ -170,7 +163,7 @@ export function useSteps(goal) {
   );
   const { data, error } = useSWR(
     !loggedOut && goal
-      ? ["http://127.0.0.1:8000/" + goal + "/steps/", localStorage.token]
+      ? [URL + "/" + goal + "/steps/", localStorage.token]
       : null,
     fetcher
   );
@@ -190,9 +183,7 @@ export function useStep(id) {
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
   const { data, error, mutate } = useSWR(
-    !loggedOut && id
-      ? ["http://127.0.0.1:8000/step/" + id, localStorage.token]
-      : null,
+    !loggedOut && id ? [URL + "/step/" + id, localStorage.token] : null,
     fetcher
   );
 
@@ -203,7 +194,7 @@ export function useStep(id) {
     stepLoading: loading,
     stepLoggedOut: loggedOut,
     step: data,
-    stepMutate : mutate,
+    stepMutate: mutate,
   };
 }
 
@@ -213,7 +204,7 @@ export function useTasks(step) {
   );
   const { data, error, mutate } = useSWR(
     !loggedOut && step
-      ? ["http://127.0.0.1:8000/" + step + "/delivery/", localStorage.token]
+      ? [URL + "/" + step + "/delivery/", localStorage.token]
       : null,
     fetcher
   );
@@ -234,9 +225,7 @@ export function useTask(id) {
     typeof window !== "undefined" && localStorage.getItem("token") != "null"
   );
   const { data, error, mutate } = useSWR(
-    !loggedOut && id
-      ? ["http://127.0.0.1:8000/delivery/" + id, localStorage.token]
-      : null,
+    !loggedOut && id ? [URL + "/delivery/" + id, localStorage.token] : null,
     fetcher
   );
 
@@ -256,10 +245,7 @@ export function useTasksByIteration(iteration) {
   );
   const { data, error, mutate } = useSWR(
     !loggedOut && iteration
-      ? [
-          "http://127.0.0.1:8000/iteration/" + iteration + "/delivery/",
-          localStorage.token,
-        ]
+      ? [URL + "/iteration/" + iteration + "/delivery/", localStorage.token]
       : null,
     fetcher
   );
@@ -280,7 +266,7 @@ export function useTasksByStep(step) {
   );
   const { data, error, mutate } = useSWR(
     !loggedOut && step
-      ? ["http://127.0.0.1:8000/" + step + "/delivery/", localStorage.token]
+      ? [URL + "/" + step + "/delivery/", localStorage.token]
       : null,
     fetcher
   );
@@ -302,10 +288,7 @@ export function useTasksByGoal(goal) {
   );
   const { data, error, mutate } = useSWR(
     !loggedOut && goal
-      ? [
-          "http://127.0.0.1:8000/" + goal + "/delivery_by_goal/",
-          localStorage.token,
-        ]
+      ? [URL + "/" + goal + "/delivery_by_goal/", localStorage.token]
       : null,
     fetcher
   );

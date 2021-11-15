@@ -1,5 +1,7 @@
+import { URL } from "./api";
+
 export const deleteGoal = async (id) => {
-  const res = await fetch("http://127.0.0.1:8000/goal/" + id + "/", {
+  const res = await fetch(URL + "/goal/" + id + "/", {
     headers: {
       "Content-Type": "application/json",
       Authorization: "Token " + localStorage.token,
@@ -11,7 +13,7 @@ export const deleteGoal = async (id) => {
 };
 
 export const deleteStep = async (id) => {
-  const res = await fetch("http://127.0.0.1:8000/step/" + id + "/", {
+  const res = await fetch(URL + "/step/" + id + "/", {
     headers: {
       "Content-Type": "application/json",
       Authorization: "Token " + localStorage.token,
