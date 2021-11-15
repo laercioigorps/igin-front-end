@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import IterationForm from "../../components/Forms/IterationForm.js";
 import { useIteration } from "../../data/use-data";
+import { registerIteration } from "../../data/create-data";
 
 export default function Register() {
   const router = useRouter();
@@ -13,22 +14,12 @@ export default function Register() {
     event.preventDefault(); // don't redirect the page
     // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/iteration/", {
-      body: JSON.stringify({
-        number: event.target.number.value,
-        date: event.target.date.value,
-        completed: false,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "POST",
-    });
+    const number = event.target.number.value;
+    const date = event.target.date.value;
+    const completed = false;
 
-    const result = await res.json();
+    const result = await registerIteration(number, date, completed);
 
-    console.log(result);
     if (result.id) {
       router.push("/iterations");
     } else {
