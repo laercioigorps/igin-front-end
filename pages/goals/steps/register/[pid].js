@@ -2,7 +2,8 @@ import RegisterStepForm from "../../../../components/forms/RegisterStepForm.js";
 import Layout from "../../../../components/layout.js";
 import { useRouter } from "next/router";
 import React from "react";
-import {useNeeds} from "../../../../data/use-data";
+import { useNeeds } from "../../../../data/use-data";
+import { registerStep } from "../../../../data/create-data.js";
 
 export default function Register() {
   const router = useRouter();
@@ -11,27 +12,19 @@ export default function Register() {
 
   const register = async (event) => {
     event.preventDefault(); // don't redirect the page
-    // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/step/", {
-      body: JSON.stringify({
-        name: event.target.name.value,
-        description: event.target.description.value,
-        completed: false,
-        goal: pid,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "POST",
-    });
+    const name = event.target.name.value;
+    const description = event.target.description.value;
+    const completed = false;
+    const goal = pid;
 
-    const result = await res.json();
+    const result = await registerStep(name, description, completed, goal);
 
-    console.log(result);
     if (result.id) {
-      router.push("/goals/" + pid);
+      router.push({
+        pathname: "/goals/[pid]",
+        query: { pid: pid },
+      });
     } else {
       console.log(result.need);
       error = result.need;
