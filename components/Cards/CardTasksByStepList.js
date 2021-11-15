@@ -1,6 +1,7 @@
 import { useTasks } from "../../data/use-data";
 import { useActiveIteration } from "../../data/use-data";
 import Link from "next/link";
+import { editTask } from "../../data/edit-data";
 
 function CardTasksByStepList(props) {
   const { data, loading, loggedOut, mutate } = useTasks(props.step);
@@ -11,25 +12,15 @@ function CardTasksByStepList(props) {
     useActiveIteration();
 
   const setIteration = async (id, ind, value) => {
-    event.preventDefault(); // don't redirect the page
-    // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/delivery/" + id + "/", {
-      body: JSON.stringify({
-        name: data[ind].name,
-        description: data[ind].description,
-        step: data[ind].step,
-        iteration: value,
-        completed: data[ind].completed,
-      }),
-      headers: {
-        Authorization: "Token " + localStorage.token,
-        "Content-Type": "application/json",
-      },
-      method: "PUT",
-    });
-
-    const result = await res.json();
+    const result = await editTask(
+      id,
+      data[ind].name,
+      data[ind].description,
+      value,
+      data[ind].step,
+      data[ind].completed
+    );
 
     console.log(result);
     if (result.id) {
