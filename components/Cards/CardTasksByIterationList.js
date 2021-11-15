@@ -5,6 +5,7 @@ import {
 } from "../../data/use-data";
 import Link from "next/link";
 import WarningNoActiveIteration from "../warnings/WarningNoActiveIteration";
+import { editTask } from "../../data/edit-data";
 
 function CardTasksByIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
@@ -15,22 +16,15 @@ function CardTasksByIterationList(props) {
     useTasksByIteration(iteration ? iteration.id : null);
 
   async function handleChange(task) {
-    const res = await fetch("http://127.0.0.1:8000/delivery/" + task.id + "/", {
-      body: JSON.stringify({
-        name: task.name,
-        description: task.description,
-        step: task.step,
-        iteration: task.iteration,
-        completed: !task.completed,
-      }),
-      headers: {
-        Authorization: "Token " + localStorage.token,
-        "Content-Type": "application/json",
-      },
-      method: "PUT",
-    });
-
-    const result = await res.json();
+  
+    const result = await editTask(
+      task.id,
+      task.name,
+      task.description,
+      task.iteration,
+      task.step,
+      !task.completed
+    );
 
     console.log(result);
     if (result.id) {
@@ -88,12 +82,12 @@ function CardTasksByIterationList(props) {
             </div>
             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
               <Link href={props.edit ? props.edit : "#"}>
-              <button
-                className="bg-green-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
-              >
-                Edit
-              </button>
+                <button
+                  className="bg-green-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  type="button"
+                >
+                  Edit
+                </button>
               </Link>
               <button
                 className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
