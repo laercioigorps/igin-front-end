@@ -85,6 +85,7 @@ const Post = () => {
     const completed = event.target.completed.checked;
 
     const result = await editTask(
+      pid,
       name,
       description,
       iteration,
