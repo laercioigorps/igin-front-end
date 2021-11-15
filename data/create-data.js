@@ -73,3 +73,16 @@ export const registerTask = async (name, description, completed, step) => {
   const result = await res.json();
   return result;
 };
+
+export const wizardSet = async () => {
+  const res = await fetch("http://127.0.0.1:8000/wizard/", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Token " + localStorage.token,
+    },
+    method: "POST",
+  });
+
+  const result = await res.json();
+  return result;
+};
