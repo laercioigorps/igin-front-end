@@ -1,4 +1,4 @@
-import RegisterTaskForm from "../../../../components/forms/RegisterTaskForm.js";
+import RegisterTaskForm from "../../../../components/Forms/RegisterTaskForm.js";
 import Layout from "../../../../components/layout.js";
 import { useRouter } from "next/router";
 import React from "react";

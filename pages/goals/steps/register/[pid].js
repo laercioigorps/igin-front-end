@@ -1,4 +1,4 @@
-import RegisterStepForm from "../../../../components/forms/RegisterStepForm.js";
+import RegisterStepForm from "../../../../components/Forms/RegisterStepForm.js";
 import Layout from "../../../../components/layout.js";
 import { useRouter } from "next/router";
 import React from "react";
