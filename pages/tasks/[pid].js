@@ -3,6 +3,7 @@ import Layout from "../../components/layout";
 import LoginForm from "../../components/auth/LoginForm";
 import RegisterTaskForm from "../../components/Forms/RegisterTaskForm";
 import { useTask } from "../../data/use-data";
+import { editTask } from "../../data/edit-data";
 
 const Post = () => {
   const router = useRouter();
@@ -76,36 +77,29 @@ const Post = () => {
 
   const edit = async (event) => {
     event.preventDefault(); // don't redirect the page
-    // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/delivery/" + pid + "/", {
-      body: JSON.stringify({
-        name: event.target.name.value,
-        description: event.target.description.value,
-        iteration: task.iteration,
-        step: task.step,
-        completed: event.target.completed.checked,
+    const name = event.target.name.value;
+    const description = event.target.description.value;
+    const iteration = task.iteration;
+    const step = task.step;
+    const completed = event.target.completed.checked;
 
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "PUT",
-    });
+    const result = await editTask(
+      name,
+      description,
+      iteration,
+      step,
+      completed
+    );
 
-    const result = await res.json();
-
-    console.log(result);
     if (result.id) {
-      taskMutate()
+      taskMutate();
       router.push("/goals/steps/" + task.step);
     } else {
       console.log(result.need);
       error = result.need;
     }
   };
-
 
   return (
     <>
