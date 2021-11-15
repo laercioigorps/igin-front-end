@@ -2,8 +2,9 @@ import RegisterForm from "../../components/auth/RegisterForm.js";
 import Layout from "../../components/layout.js";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { RegisterUser } from "../../data/user.js";
 
-export default function Login() {
+export default function Register() {
   const router = useRouter();
   const [usernameError, setUsernameError] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -11,24 +12,16 @@ export default function Login() {
   const [password2Error, setPassword2Error] = useState("");
   const [nonFieldError, setNonFieldError] = useState("");
 
-  const logUser = async (event) => {
+  const RegUser = async (event) => {
     event.preventDefault(); // don't redirect the page
     // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/rest-auth/registration/", {
-      body: JSON.stringify({
-        username: event.target.username.value,
-        email: event.target.email.value,
-        password1: event.target.password1.value,
-        password2: event.target.password2.value,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-
-    const result = await res.json();
+    const result = await RegisterUser(
+      event.target.username.value,
+      event.target.email.value,
+      event.target.password1.value,
+      event.target.password2.value
+    );
 
     if (result.key) {
       console.log(result.key);
@@ -72,7 +65,7 @@ export default function Login() {
         <div className="relative flex flex-col min-w-0 break-words bg-white mb-6 shadow-lg rounded lg:w-2/5 mx-auto">
           <RegisterForm
             loginURL="/auth/login"
-            onClick={logUser}
+            onClick={RegUser}
             usernameError={usernameError}
             emailError={emailError}
             password1Error={password1Error}
