@@ -36,3 +36,24 @@ export const registerGoal = async (name, description, endDate, need) => {
 
   return result;
 };
+
+export const registerIteration = async (number, date, completed) => {
+  event.preventDefault(); // don't redirect the page
+  // where we'll add our form logic
+
+  const res = await fetch("http://127.0.0.1:8000/iteration/", {
+    body: JSON.stringify({
+      number: number,
+      date: date,
+      completed: completed,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Token " + localStorage.token,
+    },
+    method: "POST",
+  });
+
+  const result = await res.json();
+  return result;
+};
