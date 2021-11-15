@@ -3,6 +3,7 @@ import Layout from "../../../../components/layout.js";
 import { useRouter } from "next/router";
 import React from "react";
 import {useNeeds} from "../../../../data/use-data";
+import { registerIteration, registerTask } from "../../../../data/create-data.js";
 
 export default function Register() {
   const router = useRouter();
@@ -11,25 +12,14 @@ export default function Register() {
 
   const register = async (event) => {
     event.preventDefault(); // don't redirect the page
-    // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/delivery/", {
-      body: JSON.stringify({
-        name: event.target.name.value,
-        description: event.target.description.value,
-        completed: false,
-        step: pid,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "POST",
-    });
+    const name = event.target.name.value;
+    const description = event.target.description.value;
+    const completed = false;
+    const step = pid
 
-    const result = await res.json();
+    const result = await registerTask(name, description, completed, step);
 
-    console.log(result);
     if (result.id) {
       router.push("/goals/steps/" + pid);
     } else {
