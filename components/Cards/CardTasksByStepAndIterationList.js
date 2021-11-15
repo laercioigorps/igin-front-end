@@ -1,6 +1,7 @@
 import { useActiveIteration, useTasksByStep } from "../../data/use-data";
 import Link from "next/link";
 import WarningNoActiveIteration from "../warnings/WarningNoActiveIteration";
+import { editTask } from "../../data/edit-data";
 
 function CardTasksByStepAndIterationList(props) {
   const { iteration, iterationLoading, iterationLoggedOut, iterationError } =
@@ -11,24 +12,16 @@ function CardTasksByStepAndIterationList(props) {
   console.log(tasks);
 
   async function handleChange(task) {
-    const res = await fetch("http://127.0.0.1:8000/delivery/" + task.id + "/", {
-      body: JSON.stringify({
-        name: task.name,
-        description: task.description,
-        step: task.step,
-        iteration: task.iteration,
-        completed: !task.completed,
-      }),
-      headers: {
-        Authorization: "Token " + localStorage.token,
-        "Content-Type": "application/json",
-      },
-      method: "PUT",
-    });
 
-    const result = await res.json();
+    const result = await editTask(
+      task.id,
+      task.name,
+      task.description,
+      task.iteration,
+      task.step,
+      !task.completed
+    );
 
-    console.log(result);
     if (result.id) {
       console.log("done");
     } else {
