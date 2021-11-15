@@ -69,7 +69,7 @@ export const editTask = async (
       description: description,
       iteration: iteration,
       step: step,
-      completedi: completed,
+      completed: completed,
     }),
     headers: {
       "Content-Type": "application/json",
