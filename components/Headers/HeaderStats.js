@@ -1,6 +1,7 @@
 import React from "react";
 import { useNeeds } from "../../data/use-data";
 import { useRouter } from "next/router";
+import { wizardSet } from "../../data/create-data";
 
 // components
 
@@ -14,14 +15,7 @@ export default function HeaderStats({ card, statsList, wizard }) {
     event.preventDefault(); // don't redirect the page
     // where we'll add our form logic
 
-    const res = await fetch("http://127.0.0.1:8000/wizard/", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + localStorage.token,
-      },
-      method: "POST",
-    });
-
+    const res = wizardSet()
     needsMutate()
   };
 
