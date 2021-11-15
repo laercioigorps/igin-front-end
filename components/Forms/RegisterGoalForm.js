@@ -1,11 +1,7 @@
-import { useRouter } from "next/router";
 import { useNeeds } from "../../data/use-data";
 
 export default function RegisterForm(props) {
   const { needs, needsLoading, needsLoggedOut, needsError } = useNeeds();
-  console.log(needs);
-  console.log("locading: " + needsLoading);
-  console.log("loggedOut:" + needsLoggedOut);
 
   return (
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">

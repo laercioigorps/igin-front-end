@@ -3,12 +3,11 @@ import {useUser} from "../data/use-data";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 // components
-import Layout from "../components/layout.js";
+import Layout from "../components/layout";
 // import CardLineChart from "../components/Cards/CardLineChart.js";
 // import CardBarChart from "../components/Cards/CardBarChart.js";
-import CardGoalList from "../components/Cards/CardGoalList.js";
+import CardGoalList from "../components/Cards/CardGoalList";
 import PieChart from "../components/Cards/CardGoalsPieChart";
-import CardSocialTraffic from "../components/Cards/CardSocialTraffic.js";
 
 export default function Goals() {
   const { goals, loading, loggedOut } = useUser();

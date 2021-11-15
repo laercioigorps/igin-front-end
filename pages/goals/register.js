@@ -1,4 +1,4 @@
-import RegisterForm from "../../components/forms/RegisterGoalForm";
+import RegisterForm from "../../components/forms/RegisterGoalForm.js";
 import Layout from "../../components/layout";
 import { useRouter } from "next/router";
 import React from "react";
