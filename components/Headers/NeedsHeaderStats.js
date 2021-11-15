@@ -1,4 +1,5 @@
 import React from "react";
+import { wizardSet } from "../../data/create-data";
 import useNeeds from "../../data/use-needs";
 
 // components
@@ -12,20 +13,8 @@ export default function HeaderStats({card, statsList, wizard}) {
   const wizardSetup = async event => {
       event.preventDefault() // don't redirect the page
       // where we'll add our form logic
-    
 
-      const res = await fetch(
-        'http://127.0.0.1:8000/wizard/',
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Token '+ localStorage.token,
-          },
-          method: 'POST',
-        }
-      )
-
-      const result = await res.json()
+      const result = await wizardSet()
       
       console.log(result)
       if(result.key){
