@@ -23,7 +23,7 @@ const fetcher = async (url, token) => {
 
 export function useUser() {
   const loggedOut = !(
-    typeof window !== "undefined" && localStorage.getItem("token") != "null"
+    typeof window !== "undefined" && localStorage.getItem("token") != null
   );
 
   const { data, error } = useSWR(
