@@ -11,7 +11,7 @@ export default function Needs() {
   return (
     <>
 
-    <Layout>
+    <Layout loginRequired={true}>
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
 

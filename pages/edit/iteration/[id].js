@@ -34,7 +34,7 @@ export default function EditGoal() {
 
   return (
     <>
-      <Layout cond="false" card="off">
+      <Layout cond="false" card="off" loginRequired={true}>
         <div className="relative flex flex-col min-w-0 break-words bg-white mb-6 shadow-lg rounded lg:w-2/5 mx-auto">
           <IterationForm onClick={edit} error={error} iteration={iteration} />
         </div>

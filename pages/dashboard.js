@@ -12,11 +12,6 @@ import CardGoalList from "../components/Cards/CardGoalList.js";
 
 export default function Dashboard() {
   // if logged out, redirect to the homepage
-  const { user, loading, loggedOut } = useUser();
-  console.log(user)
-  const router = useRouter();
-  useEffect(() => (loggedOut ? router.push("/auth/login") : null));
-  //const { data, loading, loggedOut} = useNeeds();
 
   const tasks = [
     {
@@ -63,7 +58,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <Layout cond="true" wizard="true" statsList={false}>
+      <Layout cond="true" wizard="true" statsList={false} loginRequired={true}>
         <div className="flex flex-wrap mt-4">
           <div className="w-full xl:w-7/12 mb-12 xl:mb-0 px-4">
             <CardTasksByIterationList />

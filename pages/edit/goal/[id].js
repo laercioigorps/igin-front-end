@@ -4,9 +4,8 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useNeeds, useGoal } from "../../../data/use-data";
 import DeleteButton from "../../../components/Button/DeleteButton";
-import {editGoal} from "../../../data/edit-data"
+import { editGoal } from "../../../data/edit-data";
 import { deleteGoal } from "../../../data/delete-data";
-
 
 export default function EditGoal() {
   const router = useRouter();
@@ -18,12 +17,12 @@ export default function EditGoal() {
     event.preventDefault(); // don't redirect the page
     // where we'll add our form logic
 
-    const name = event.target.name.value
-    const description = event.target.description.value
-    const endDate = event.target.endDate.value
-    const need = event.target.need.value
+    const name = event.target.name.value;
+    const description = event.target.description.value;
+    const endDate = event.target.endDate.value;
+    const need = event.target.need.value;
 
-    const result = await editGoal(id, name, description, endDate, need)
+    const result = await editGoal(id, name, description, endDate, need);
 
     if (result.id) {
       router.push("/goals/" + result.id);
@@ -36,7 +35,7 @@ export default function EditGoal() {
     event.preventDefault(); // don't redirect the page
     // where we'll add our form logic
 
-    const resp = deleteGoal(id)
+    const resp = deleteGoal(id);
     router.push({
       pathname: "/goals/",
     });
@@ -44,7 +43,7 @@ export default function EditGoal() {
 
   return (
     <>
-      <Layout cond="false" card="off">
+      <Layout cond="false" card="off" loginRequired={true}>
         <div className="relative flex flex-col min-w-0 break-words bg-white mb-6 shadow-lg rounded lg:w-2/5 mx-auto">
           <RegisterForm onClick={edit} error={error} goal={goal} />
         </div>
