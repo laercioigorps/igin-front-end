@@ -6,14 +6,21 @@ function CardStepsByGoalList(props) {
 
   const list = data
     ? data.map((step) => (
-        <tr key={step.id}>
+        <tr
+          key={step.id}
+          className={
+            step.percentageCompleted === "100.0%"
+              ? "line-through text-gray-600"
+              : ""
+          }
+        >
           <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left capitalize ">
             <Link href={"/goals/steps/" + step.id}>
               <a className="hover:text-blue-600">{step.name}</a>
             </Link>
           </th>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            {data ? data.completed ? "Y" : "N" : ""}
+            {step.percentageCompleted === "100.0%" ? "Y" : "N"}
           </td>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             Active
