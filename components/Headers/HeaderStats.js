@@ -16,7 +16,7 @@ export default function HeaderStats({ card, statsList, wizard }) {
     // where we'll add our form logic
 
     const res = wizardSet()
-    needsMutate()
+    router.reload()
   };
 
   const wizardButton = (
