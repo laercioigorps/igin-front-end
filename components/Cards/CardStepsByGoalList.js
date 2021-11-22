@@ -20,7 +20,7 @@ function CardStepsByGoalList(props) {
             </Link>
           </th>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            {step.percentageCompleted === "100.0%" ? "Y" : "N"}
+            {step.percentageCompleted.substring(0, 5)}
           </td>
           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             Active
