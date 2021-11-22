@@ -8,15 +8,16 @@ import { wizardSet } from "../../data/create-data";
 import CardStats from "../Cards/CardStats.js";
 
 export default function HeaderStats({ card, statsList, wizard }) {
-  const { needs, needsLoading, needsLoggedOut, needsError, needsMutate } = useNeeds();
+  const { needs, needsLoading, needsLoggedOut, needsError, needsMutate } =
+    useNeeds();
   const router = useRouter();
 
   const wizardSetup = async (event) => {
     event.preventDefault(); // don't redirect the page
     // where we'll add our form logic
 
-    const res = wizardSet()
-    router.reload()
+    const res = wizardSet();
+    router.reload();
   };
 
   const wizardButton = (
@@ -110,31 +111,29 @@ export default function HeaderStats({ card, statsList, wizard }) {
       </div>
     </>
   );
-
-  function getContent() {
-    if (needsLoading && !needs) {
-      return loadingContent;
-    } else if (needs) {
-      if (needs.length == 0) {
-        console.log("butbut");
-        return wizardButton;
-      } else if (needs.length > 0) {
-        console.log("aquiii");
-        return needs.map((stat) => (
-          <div key={stat.id} className="w-full lg:w-6/12 xl:w-1/5 px-2">
-            <CardStats
-              statSubtitle={stat.name}
-              statTitle="--"
-              statArrow={stat.statArrow}
-              statPercent="-"
-              statPercentColor={stat.statPercentColor}
-              statDescripiron="------"
-              statIconName={stat.iconName}
-              statIconColor={stat.iconColor}
-            />
-          </div>
-        ));
-      }
+  var resp = "";
+  if (statsList) {
+    resp = statsListToDisplay;
+  } else if (needsLoading && !needs) {
+    resp = loadingContent;
+  } else if (needs) {
+    if (needs.length == 0) {
+      resp = wizardButton;
+    } else if (needs.length > 0) {
+      resp = needs.map((stat) => (
+        <div key={stat.id} className="w-full lg:w-6/12 xl:w-1/5 px-2">
+          <CardStats
+            statSubtitle={stat.name}
+            statTitle="--"
+            statArrow={stat.statArrow}
+            statPercent="-"
+            statPercentColor={stat.statPercentColor}
+            statDescripiron="------"
+            statIconName={stat.iconName}
+            statIconColor={stat.iconColor}
+          />
+        </div>
+      ));
     }
   }
 
@@ -149,7 +148,7 @@ export default function HeaderStats({ card, statsList, wizard }) {
               className="flex flex-wrap"
               style={card == "off" ? { display: "none" } : {}}
             >
-              {statsList ? statsListToDisplay : getContent()}
+              {resp}
             </div>
           </div>
         </div>
