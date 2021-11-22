@@ -32,7 +32,7 @@ function CardTasksByGoalAndIterationList(props) {
   const list =
     tasks && iteration
       ? tasks.map((task) =>
-          task.iteration == iteration.id ? (
+          task.iteration == iteration.id && task.completed == false? (
             <tr
               key={task.id}
               className={
