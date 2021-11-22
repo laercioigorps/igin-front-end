@@ -3,6 +3,7 @@ import Layout from "../../components/layout.js";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { RegisterUser } from "../../data/user.js";
+import { wizardSet } from "../../data/create-data.js";
 
 export default function Register() {
   const router = useRouter();
@@ -27,6 +28,7 @@ export default function Register() {
       console.log(result.key);
       localStorage.setItem("token", result.key);
       if (localStorage.token) {
+        const res = wizardSet();
         router.push("/dashboard");
       }
     } else {
