@@ -16,7 +16,7 @@ export default function IterationForm(props) {
             id="number"
             type="number"
             placeholder="number of iteration"
-            defaultValue={props.iteration ? props.iteration.number : null}
+            defaultValue={props.iteration ? props.iteration.number : ""}
           />
         </div>
 
@@ -31,7 +31,7 @@ export default function IterationForm(props) {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
             id="date"
             type="date"
-            defaultValue={props.iteration ? props.iteration.date : null}
+            defaultValue={props.iteration ? props.iteration.date : ""}
           />
           <p className="text-red text-xs italic">{props.error}</p>
         </div>
