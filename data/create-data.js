@@ -84,7 +84,16 @@ export const wizardSet = async () => {
     },
     method: "POST",
   });
+  return res.ok;
+};
 
-  const result = await res.json();
-  return result;
+export const tutorialSet = async () => {
+  const resp = await fetch(URL + "/tutorialsetup/", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Token " + localStorage.token,
+    },
+    method: "POST",
+  });
+  return resp.ok;
 };
