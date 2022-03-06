@@ -7,7 +7,7 @@ export default function LogOut() {
   const router = useRouter();
 
   if (typeof window !== "undefined") {
-    localStorage.setItem("token", null);
+    localStorage.removeItem('token');
     router.push("/auth/login");
   }
 
